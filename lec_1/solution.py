@@ -29,3 +29,52 @@ OS=[Computers["Laptop1"]["OS"],Computers["Laptop2"]["OS"],Computers["Desktop"]["
 print(brand)
 print(OS)
 
+#q4
+def Listinput(n):
+  list=[]
+  print("Enter elements of list")
+  for i in range (0,n,1):
+   a=int(input())
+   if a%2==0:
+      list.append(a)
+  return list
+n=int(input("Enter lenght of list:"))
+print(Listinput(n))
+
+#q5
+def strings(str):
+    l=len(str)
+    vow=0
+    con=0
+    space=0
+    for i in range (0,l,1):
+        if((str[i]>='a' and str[i]<='z') or (str[i]>='A' and str[i]<='Z')):
+         if (str[i]=='a'or str[i]=='e'or str[i]=='i'or str[i]=='o'or str[i]=='u'or str[i]=='A'or str[i]=='E'or str[i]=='I'or str[i]=='O'or str[i]=='U'):
+             vow+=1
+         else:
+             con+=1   
+    print("vowels:",vow,"consonants", con)
+str=input("Enter a string")
+strings(str) 
+
+#q6
+def Strings():
+   n=int(input("enter lenght of list"))    
+   str=[]
+   print("Enter elements of list")
+   for i in range (0,n,1):
+    a=input()
+    str.append(a)
+   long=0
+   largest=""
+   for i in range(0,n,1):
+     word=str[i]
+     l=len(word)
+     if(long<l):
+         long=l
+         largest=word
+        
+   print("Largest String is:",largest,"with lenght:",long)
+
+Strings()
+
