@@ -1,0 +1,68 @@
+def boardsetup(board):
+    for r in range(3):
+        print(board[r][0], "  ", board[r][1], "  ", board[r][2])
+
+def move():
+    while True:
+        try:
+            move = int(input("Enter number between 1 and 9: "))
+            if 1 <= move <= 9:
+                return move
+            else:
+                print("INVALID INPUT: Enter a number between 1 and 9")
+        except ValueError:
+            print("")
+
+def win(board, player):
+    for row in range(3):
+        if board[row][0] == board[row][1] == board[row][2] == player:
+            return True
+    for col in range(3):
+        if board[0][col] == board[1][col] == board[2][col] == player:
+            return True
+    if board[0][0] == board[1][1] == board[2][2] == player:
+        return True
+    if board[0][2] == board[1][1] == board[2][0] == player:
+        return True
+    return False
+
+def draw(board):
+    for row in board:
+        for cell in row:
+            if cell != "X" and cell != "O":
+                return False
+    return True
+
+def tic_tac_toe():
+    board = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    players = ["X", "O"]
+    current_player = 0
+
+    
+    boardsetup(board)
+
+    while True:
+        print("Player",players[current_player],"s turn")
+        moved = move()
+
+       
+        for r in range(3):
+            for c in range(3):
+                if board[r][c] == moved:
+                    if type(board[r][c])==int:
+                        board[r][c] = players[current_player]
+                        boardsetup(board)
+
+                        if win(board, players[current_player]):
+                            print("Player",players[current_player],"wins!")
+                            return
+
+                        if draw(board):
+                            print("It's a draw!")
+                            return
+
+                        current_player = 1 - current_player
+                    else:
+                        print("That cell is already taken. Try again.")
+
+tic_tac_toe()
